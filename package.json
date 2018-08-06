@@ -9,7 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "debug": "^3.1.0"
+  },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -17,6 +19,7 @@
     "eslint-config-latest": "^1.0.7",
     "rollup": "^0.63.5",
     "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-eslint": "^5.0.0"
+    "rollup-plugin-eslint": "^5.0.0",
+    "rollup-plugin-node-resolve": "^3.3.0"
   }
 }
