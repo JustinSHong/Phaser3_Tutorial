@@ -12,6 +12,13 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
+    physics: {
+        default: "arcade",
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
     scene: {
         preload: preload,
         create: create,
@@ -32,8 +39,18 @@ function preload() {
     });
 }
 
+let platforms;
+
 function create() {
     this.add.image(400, 300, "sky");
+    platforms = this.physics.add.staticGroup();
+    platforms
+        .create(400, 568, "platform")
+        .setScale(2)
+        .refreshBody();
+    platforms.create(600, 400, "platform");
+    platforms.create(50, 250, "platform");
+    platforms.create(750, 220, "platform");
 }
 
 function udpate() {}
