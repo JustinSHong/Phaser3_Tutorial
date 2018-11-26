@@ -46,6 +46,9 @@ let player;
 let stars;
 let cursors;
 
+let score = 0;
+const scoreText;
+
 // draws game objects in the order in which they are called
 // game objects are added to the Scenes display list
 // Scene extends infinitely in all directions
@@ -112,6 +115,9 @@ function create() {
     stars.children.iterate(function(child) {
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     });
+
+    // display score
+    scoreText = this.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#000'});
 
     // check for collisions between player and platforms
     this.physics.add.collider(player, platforms);
