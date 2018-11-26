@@ -112,8 +112,13 @@ function create() {
     stars.children.iterate(function(child) {
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     });
-    // check for collisions between groups/game objects
+
+    // check for collisions between player and platforms
     this.physics.add.collider(player, platforms);
+    // check for collisions between stars and platforms
+    this.physics.add.collider(stars, platforms);
+    // check for overlaps between stars and player
+    this.physics.add.overlap(player, stars, collectStar, null, this);
 }
 
 function udpate() {
