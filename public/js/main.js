@@ -153,4 +153,8 @@ function udpate() {
 // star body is disabled, parent Game Object is inactive/invisible - rmeove from screen
 function collectStar(player, star) {
     star.disableBody(true, true);
+
+    // update score
+    score += 10;
+    scoreText.setText(`Score: ${score}`);
 }
