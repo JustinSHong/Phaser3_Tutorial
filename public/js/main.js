@@ -45,6 +45,7 @@ let platforms;
 let player;
 let stars;
 let cursors;
+let bombs;
 
 let score = 0;
 let scoreText;
@@ -116,6 +117,8 @@ function create() {
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
     });
 
+    bombs = this.physics.add.group();
+
     // display score
     scoreText = this.add.text(16, 16, "score: 0", {
         fontSize: "32px",
@@ -128,6 +131,10 @@ function create() {
     this.physics.add.collider(stars, platforms);
     // check for overlaps between stars and player
     this.physics.add.overlap(player, stars, collectStar, null, this);
+    // check for collisions between bombs and platform
+    this.physics.add.collider(bomb, platforms);
+    // check for collisions between player and bombs
+    this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
 
 function udpate() {
