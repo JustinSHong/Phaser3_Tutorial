@@ -43,6 +43,7 @@ function preload() {
 
 let platforms;
 let player;
+let stars;
 let cursors;
 
 // draws game objects in the order in which they are called
@@ -100,6 +101,17 @@ function create() {
     // populate cursors object with up, down, left, right instances of Key objects
     cursors = this.input.keyboard.createCursorKeys();
 
+    // add star sprites
+    stars = this.physics.add.group({
+        key: " star", // texture key
+        repeat: 11, // generate 12 stars
+        setXY: { x: 12, y: 0, stepX: 70 } // space out children
+    });
+
+    // give stars a random bounce
+    stars.children.iterate(function(child) {
+        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+    });
     // check for collisions between groups/game objects
     this.physics.add.collider(player, platforms);
 }
