@@ -143,3 +143,8 @@ function udpate() {
         player.setVelocityY(-330);
     }
 }
+
+// star body is disabled, parent Game Object is inactive/invisible - rmeove from screen
+function collectStar(player, star) {
+    star.disableBody(true, true);
+}
