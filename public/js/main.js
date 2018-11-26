@@ -104,4 +104,25 @@ function create() {
     this.physics.add.collider(player, platforms);
 }
 
-function udpate() {}
+function udpate() {
+    // left key held down - start the left animation
+    if (cursors.left.isDown) {
+        player.setVelocityX(-160);
+        player.anims.play("left", true);
+    }
+    // right key held down - start the right animation
+    else if (cursors.right.isDown) {
+        player.setVelocityX(160);
+        player.anims.play("right", true);
+    }
+    // otherwise - clear animations
+    else {
+        player.setVelocityX(0);
+        player.anims.play("turn");
+    }
+    // up key held down - allow sprite to jump
+    // no double jumping allowed
+    if (cursors.up.isDown && player.body.touching.down) {
+        player.setVelocityY(-330);
+    }
+}
