@@ -168,3 +168,11 @@ function collectStar(player, star) {
     score += 10;
     scoreText.setText(`Score: ${score}`);
 }
+
+// stop game when player hits bomb
+function hitBomb(player, bomb) {
+    this.physics.pause();
+    player.setTint(0xff0000);
+    player.anims.play("turn");
+    gameOver = true;
+}
