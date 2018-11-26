@@ -132,7 +132,7 @@ function create() {
     // check for overlaps between stars and player
     this.physics.add.overlap(player, stars, collectStar, null, this);
     // check for collisions between bombs and platform
-    this.physics.add.collider(bomb, platforms);
+    this.physics.add.collider(bombs, platforms);
     // check for collisions between player and bombs
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
@@ -167,6 +167,27 @@ function collectStar(player, star) {
     // update score
     score += 10;
     scoreText.setText(`Score: ${score}`);
+
+    // coutn how many stars are left alive
+    if (stars.countActive(true) === 0) {
+        // all stars collected - re-enable all stars
+        stars.children.iterate(function(child) {
+            child.enableBody(true, child.x, 0, true, true);
+        });
+    }
+
+    // pick random x coordinate for bomb - opposite to player
+    let x =
+        player.x < 400
+            ? Phaser.Math.Between(400, 800)
+            : Phaser.Math.Between(0, 400);
+
+    // create bomb - bounces, collides with world, ignores gravity, has random speed
+    let bomb = bombs.create(x, 16, "bomb");
+    bomb.setBounce(1);
+    bomb.setColliderWorldBounds(true);
+    bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    bomb.allowGravity = false;
 }
 
 // stop game when player hits bomb
