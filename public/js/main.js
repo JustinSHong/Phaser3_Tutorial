@@ -103,7 +103,7 @@ function create() {
 
     // add star sprites
     stars = this.physics.add.group({
-        key: " star", // texture key
+        key: "star", // texture key
         repeat: 11, // generate 12 stars
         setXY: { x: 12, y: 0, stepX: 70 } // space out children
     });
