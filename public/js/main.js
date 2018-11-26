@@ -43,6 +43,7 @@ function preload() {
 
 let platforms;
 let player;
+let cursors;
 
 // draws game objects in the order in which they are called
 // game objects are added to the Scenes display list
@@ -95,6 +96,9 @@ function create() {
         frameRate: 10,
         repeat: -1
     });
+
+    // populate cursors object with up, down, left, right instances of Key objects
+    cursors = this.input.keyboard.createCursorKeys();
 
     // check for collisions between groups/game objects
     this.physics.add.collider(player, platforms);
