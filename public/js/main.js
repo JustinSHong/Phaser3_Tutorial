@@ -95,6 +95,9 @@ function create() {
         frameRate: 10,
         repeat: -1
     });
+
+    // check for collisions between groups/game objects
+    this.physics.add.collider(player, platforms);
 }
 
 function udpate() {}
